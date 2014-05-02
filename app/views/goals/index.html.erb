@@ -1,0 +1,31 @@
+<h1>Goals</h1>
+
+<% @goals.each do |goal| %>
+  <% if goal.owner == current_user %>
+    <br>
+    <%= link_to "#{goal.body}", goal_url(goal) %> | Author:
+    <%= "#{goal.owner.username}" %>
+    <%= goal.private == true ? " | private" : "" %>
+    <% if goal.completed %>
+      <br>
+      Completed
+      <br>
+    <% else %>
+      <form action = "<%= goal_url(goal) %>" method="post">
+        <%= form_auth_token %>
+        <input type='hidden' name='_method' value='patch' >
+          <input type="checkbox" name="goal[completed]" id="completed" value="<%= true %>">
+          <label for="completed">Completed?</label>
+          <input type='submit' value='update'>
+      </form>
+    <% end %>
+  <% elsif goal.private == false %>
+    <br>
+    <%= link_to "#{goal.body}", goal_url(goal) %> | Author:
+    <%= "#{goal.owner.username}" %><br>
+  <% end %>
+
+<% end %>
+<br>
+<br>
+<%= link_to "Add Goal", new_goal_url %>

@@ -28,7 +28,7 @@ gem 'spring',        group: :development
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt'
-
+gem 'debugger'
 group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails'

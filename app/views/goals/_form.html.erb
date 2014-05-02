@@ -1,0 +1,29 @@
+<form action="<%= action %>" method="post">
+  <%= form_auth_token %>
+    <% unless value.nil? %>
+      <input type='hidden' name='_method' value="patch">
+    <% end %>
+    <label>Goal</br>
+      <input type="text" name="goal[body]" value="<%= goal.body %>" id="goal">
+    </label>
+    <% if goal.private == true %>
+    <input type="radio" name="goal[private]" id="Private" value="<%= true %>" checked>
+      <label for="Private">Private</label>
+
+      <input type="radio" name="goal[private]" id="Public" value="<%= false %>">
+      <label for="Public">Public</label><br>
+    <% else %>
+      <input type="radio" name="goal[private]" id="Private" value="<%= true %>">
+        <label for="Private">Private</label>
+
+        <input type="radio" name="goal[private]" id="Public" value="<%= false %>" checked>
+        <label for="Public">Public</label><br>
+    <% end %>
+
+      <% if value == 'patch' %>
+        <input type="submit" value="Update Goal">
+      <% else %>
+        <input type="submit" value="Add Goal">
+      <% end %>
+</form>
+

@@ -39,5 +39,48 @@ RSpec.configure do |config|
   # order dependency and want to debug it, you can fix the order by providing
   # the seed, which is printed after each run.
   #     --seed 1234
-  config.order = "random"
+  # config.order = "random"
+end
+
+
+def sign_up_as_hal_jordan
+  visit '/users/new'
+  fill_in 'Username', with: 'hal_jordan'
+  fill_in 'Password', with: 'password'
+  click_button 'Sign Up'
+end
+
+def sign_up_as_batman
+  visit '/users/new'
+  fill_in 'Username', with: 'BATMAN'
+  fill_in 'Password', with: 'password'
+  click_button 'Sign Up'
+end
+
+def log_in_as_hal_jordan
+  sign_up_as_hal_jordan
+  click_button 'Log Out'
+  visit '/session/new'
+  fill_in 'Username', with: 'hal_jordan'
+  fill_in 'Password', with: 'password'
+  click_button 'Sign In'
+end
+
+def add_public_goal
+  visit '/goals/new'
+  fill_in 'Goal', with: 'Save the world'
+  click_button 'Add Goal'
+end
+
+def add_private_goal
+  visit '/goals/new'
+  fill_in 'Goal', with: 'Clean spandex'
+  choose('Private')
+  click_button 'Add Goal'
+end
+
+def edit_goal
+  click_link 'Edit Goal'
+  fill_in 'Goal', with: 'Find magical ring'
+  click_button 'Update Goal'
 end

@@ -1,0 +1,8 @@
+<h1> Edit Goal </h1>
+
+<%= render partial: 'form',
+  locals: { action: goal_url(@goal), value: "patch", goal: @goal } %>
+
+<%= button_to "Remove Goal", goal_url(@goal), method: 'delete' %>
+<br>
+<%= link_to "Goals", goals_url %>

@@ -1,0 +1,8 @@
+<%= "#{@goal.owner.username}" %>'s
+<%= @goal.private == true ? "private" : "public" %>
+goal
+<h1><%= "#{@goal.body}" %></h1>
+
+
+
+<%= link_to "Edit Goal", edit_goal_url(@goal) %> : <%= link_to "Goals", goals_url %>
