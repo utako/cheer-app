@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include Commentable
   attr_reader :password
   validates :username, :password_digest, :session_token, presence: true
   validates :password, presence: true, on: :create

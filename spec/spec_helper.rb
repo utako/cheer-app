@@ -84,3 +84,13 @@ def edit_goal
   fill_in 'Goal', with: 'Find magical ring'
   click_button 'Update Goal'
 end
+
+def comment_on_hals_page
+  fill_in 'Comment', with: "it ain't easy bein' green"
+  click_button 'Add Comment'
+end
+
+def comment_on_hals_goal
+  fill_in 'Comment', with: "WTG"
+  click_button 'Add Comment'
+end

@@ -4,5 +4,5 @@ goal
 <h1><%= "#{@goal.body}" %></h1>
 
 
-
+<%= render partial: 'comments/comment', locals: { type: @goal.class.to_s.downcase, action: goal_commments_url(@goal) } %>
 <%= link_to "Edit Goal", edit_goal_url(@goal) %> : <%= link_to "Goals", goals_url %>

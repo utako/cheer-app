@@ -1,0 +1,5 @@
+<h1><%= @user.username %></h1>
+
+<!-- add comments here -->
+
+<%= render partial: 'comments/comment', locals: {type: @user.class.to_s.downcase, action: user_comments_url(@user) }%>
