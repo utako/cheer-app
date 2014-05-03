@@ -1,5 +1,12 @@
 <h1><%= @user.username %></h1>
 
-<!-- add comments here -->
+<h2>Comments</h2>
+<% unless @user.comments.nil? %>
+  <% @user.comments.each do |comment| %>
+    <p><%= comment.body %></p>
+    by <%= comment.commenter.username %><br>
+  <% end %>
+<% end %>
 
-<%= render partial: 'comments/comment', locals: {type: @user.class.to_s.downcase, action: user_comments_url(@user) }%>
+<%= render partial: 'comments/comment', locals: { type: @user.class.to_s.downcase, user: @user, goal: nil } %>
+

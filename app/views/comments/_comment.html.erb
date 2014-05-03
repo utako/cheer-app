@@ -1,7 +1,13 @@
+<% action_url = goal.nil? ? user_comments_url(user) : goal_comments_url(goal) %>
+<% commentable_id = goal.nil? ? user.id : goal.id %>
+<% commentable_type = goal.nil? ? User : Goal %>
+
 <h3>Add Comment</h3>
 
-<form action="<%= action %>" method="post">
+<form action="<%= action_url %>" method="post">
   <%= form_auth_token %>
+  <input type='hidden' name='comment[commentable_id]' value="<%= commentable_id %>">
+  <input type='hidden' name='comment[commentable_type]' value="<%= commentable_type %>">
   <label>
     <input type="text" name="<%= "comment[body]"%>">
   </label>
